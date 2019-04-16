@@ -1,0 +1,43 @@
+.product-details {
+    .card {
+        .cover-image {
+            position: relative;
+            cursor: pointer;
+
+            img {
+                height: 240px;
+                width: 100%;
+            }
+
+            .cover-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 45%;
+                display: flex;
+                justify-content: center;
+                background: #d3d3d3d9;
+                opacity: 0;
+                transition: all 0.4s ease-in-out;
+
+                span {
+                    i {
+                        font-size: 24px;
+                        cursor: pointer;
+                        padding: 7px 30px;
+                    }
+
+                    &:hover {
+                        color: #ffffff;
+                    }
+                }
+            }
+
+            &:hover .cover-button {
+                transition: all 0.5s ease-in-out;
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@import "variables";
+
+@mixin xsmobile {
+  @media (min-width: #{$mobileS-width}) and (max-width: #{$mobileM-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobileM {
+  @media (min-width: #{$mobileM-width}) and (max-width: #{$mobileL-width}) {
+    @content;
+  }
+}
+
+@mixin mobileL {
+
+  // @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobileTB {
+  @media (min-width: #{$mobileL-width}) and (max-width: #{$mobile575-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-to-laptop-desktop {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-laptop-width}) {
+    @content;
+  }
+}
+
+@mixin desktop-wide-screen {
+  @media (min-width: #{$desktop-width}) and (max-width: #{$widescreen-witdh}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin full-hd-desktop {
+  @media (min-width: #{$fullhd-width}) {
+    @content;
+  }
+}

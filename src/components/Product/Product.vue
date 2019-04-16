@@ -1,5 +1,5 @@
 <template>
-  <div class="col-lg-3 col-md-6 mb-4">
+  <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4 product-component">
     <div class="card h-100">
       <div class="cover-image">
         <router-link :to="{path: '/product/'+ to_slug(data.ProductName)+'/'+data._id+'.html'}">
@@ -28,7 +28,7 @@
           >{{data.ProductName}}</router-link>
         </h4>
         <h5>{{data.Price}} $</h5>
-        <p class="card-text">{{data.Description}}</p>
+        <p class="card-text" :title="data.Description">{{data.Description}}</p>
       </div>
     </div>
   </div>
@@ -50,6 +50,11 @@ export default {
         Quantity: 1
       };
       this.$store.dispatch("CartModule/ADD_CART", order);
+      this.$toasted.success("Add to cart succesfully", {
+          theme: "toasted-primary",
+          position: "top-right",
+          duration: 1000,
+        });
       // confirm('Bạn muốn thêm sản phẩm vào giỏ hàng ?');  
     },
     to_slug(str) {
@@ -70,47 +75,6 @@ export default {
   }
 };
 </script>
-<style scoped>
-img.card-img-top {
-  height: 210px;
-}
-.cover-image {
-  position: relative;
-  cursor: pointer;
-}
-.h-100:hover{
-  transition: all 0.5s ease-in-out;
-  transform: translateY(-5px);
-  box-shadow: 0 6px 13px 3px lightslategrey;
-}
-span a {
-  color: #000000d6;
-}
-.cover-button {
-  z-index: 9999;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  background: #d3d3d3d9;
-  opacity: 0;
-  transition: all 0.4s ease-in-out;
-  border-radius: 7px;
-}
-.cover-image:hover .cover-button {
-  transition: all 0.5s ease-in-out;
-  opacity: 1;
-}
-.cover-button span i {
-  font-size: 20px;
-  cursor: pointer;
-  padding: 7px 7px;
-}
-.cover-button span i:hover {
-  color: #ffffff;
-}
+<style lang="scss" scoped>
+@import "public/scss/product.scss";
 </style>
-

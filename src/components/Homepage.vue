@@ -1,7 +1,7 @@
 <template>
   <!-- Page Content -->
-  <div class="container">
-    <div class="row">
+  <div class="container homepage">
+    <div class="row row-content">
       <!-- list category -->
       <!-- <div class="col-lg-3">
         <h1 class="my-5">Shop 3s</h1>
@@ -12,7 +12,7 @@
         </div>
       </div>-->
       <!-- /.col-lg-3 -->
-      <div class="col-lg-12">
+      <div class="col-11 mx-auto">
         <!-- carousel -->
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -23,21 +23,21 @@
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
               <img
-                class="d-block img-fluid"
+                class="d-block" style="width: 100%"
                 src="https://ionic-shop-api.herokuapp.com/images/carousel-dong-phuc-ao-phong-900x350.jpg"
                 alt="First slide"
               >
             </div>
             <div class="carousel-item">
               <img
-                class="d-block img-fluid"
+                class="d-block" style="width: 100%"
                 src="https://ionic-shop-api.herokuapp.com/images/carousel-dong-phuc-bep-02-900x350.jpg"
                 alt="Second slide"
               >
             </div>
             <div class="carousel-item">
               <img
-                class="d-block img-fluid"
+                class="d-block" style="width: 100%"
                 src="https://ionic-shop-api.herokuapp.com/images/carousel-dong-phuc-cong-so-07-900x350.jpg"
                 alt="Third slide"
               >
@@ -62,7 +62,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <div class="row">
+        <div class="row home-products">
           <!-- loop item-product -->
           <Product v-for="product in products" :key="product._id" :data="product"></Product>
         </div>
@@ -87,11 +87,13 @@ export default {
     this.$store.dispatch("ProductModule/FETCH_PRODUCTS");
   },
   computed: {
-    ...mapGetters("ProductModule", { products: "FIND_ALL_PRODUCT" })
-  }
+    ...mapGetters("ProductModule", { products: "FIND_ALL_PRODUCT" }),
+    ...mapGetters("AuthModule", { isLogin: "GET_IS_LOGIN" }),
+  },
+  methods: {}
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import "public/scss/homepage.scss";
 </style>
-
 

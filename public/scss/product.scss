@@ -1,0 +1,56 @@
+@import "mixins";
+
+.product-component {
+  .card {
+      @include mobileM{
+        width: 85%;
+        margin: auto;
+      }
+    .cover-image {
+      position: relative;
+      cursor: pointer;
+      a{
+        color: #212529 !important;
+      }
+      &:hover .cover-button {
+        transition: all 0.5s ease-in-out;
+        opacity: 1;
+      }
+
+      .card-img-top {
+        height: 210px;
+      }
+
+      .cover-button {
+        z-index: 9999;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        background: #d3d3d3d9;
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+        border-radius: 7px;
+
+        i {
+          font-size: 20px;
+          cursor: pointer;
+          padding: 7px 7px;
+
+          &:hover {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+
+    &.h-100:hover {
+      transition: all 0.5s ease-in-out;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 13px 3px lightslategrey;
+    }
+  }
+}

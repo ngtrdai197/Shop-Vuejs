@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <Header></Header>
     <div class="cover-transition">
       <transition enter-active-class="animated fadeInDown" leave-active-class="animated fadeInUp">
@@ -9,7 +9,6 @@
       </transition>
       <Footer></Footer>
     </div>
-  </div>
 </template>
 <script>
 import Header from "./Share/Header.vue";
@@ -20,6 +19,7 @@ export default {
     Header,
     Footer
   }
+
 };
 </script>
 <style scoped>
@@ -30,6 +30,7 @@ export default {
 }
 .cover-transition {
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 </style>
 

@@ -10,13 +10,13 @@ import NotFound from './components/NotFound'
 
 export const routes = [
     { path: '/', component: Homepage },
-    { path: '/home', redirect: '/' },
-    { path: '/product', component: Product },
-    { path: '/product/:product_name/:id.html', component: ProductDetail },
-    { path: '/contact', component: Contact },
-    { path: '/service', component: Service },
-    { path: '/cart', component: Cart },
-    { path: '/auth/login', component: Login },
-    { path: '/auth/register', component: Register },
+    { path: '/home', name: 'home', redirect: '/', meta:{title:'Home'} },
+    { path: '/product', name: 'product', component: Product },
+    { path: '/product/:product_name/:id.html', component: ProductDetail, meta:{title:'Product Details'} },
+    { path: '/contact', name: 'contact', component: Contact },
+    { path: '/service', name: 'service', component: Service },
+    { path: '/cart', name: 'cart', component: Cart, meta: { requiresAuth: true } },
+    { path: '/auth/login', name: 'login', component: Login },
+    { path: '/auth/register', name: 'register', component: Register },
     { path: '/**', component: NotFound },
 ]

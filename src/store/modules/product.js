@@ -1,4 +1,5 @@
 import Axios from "axios";
+import API from "../../@core/api";
 
 const product = {
     namespaced: true,
@@ -6,22 +7,16 @@ const product = {
         products: [],
         product: {},
     },
-    getters:{
-        FIND_ALL_PRODUCT: state => {
-            return state.products;
-        }
+    getters: {
+        FIND_ALL_PRODUCT: state => state.products
     },
     mutations: {
-        GET_ALL_PRODUCT: (state, payload) => {
-            state.products = payload
-        },
-        FIND_PRODUCT: (state, payload) => {
-            state.product = payload
-        }
+        GET_ALL_PRODUCT: (state, payload) => state.products = payload,
+        FIND_PRODUCT: (state, payload) => state.product = payload
     },
     actions: {
         FETCH_PRODUCTS({ commit }) {
-            Axios.get("https://ionic-shop-api.herokuapp.com/product/api")
+            Axios.get(`${API.HOST}/${API.PRODUCT.GET_ALL}`)
                 .then(response => {
                     commit('GET_ALL_PRODUCT', response.data)
                 })
@@ -30,7 +25,7 @@ const product = {
                 })
         },
         FIND_PRODUCT({ commit }, id) {
-            Axios.get(`https://ionic-shop-api.herokuapp.com/product/api/${id}`)
+            Axios.get(`${API.HOST}/${API.PRODUCT.GET_ALL}/${id}`)
                 .then(response => {
                     commit('FIND_PRODUCT', response.data[0])
                 })

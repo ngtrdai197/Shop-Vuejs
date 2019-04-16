@@ -3,7 +3,7 @@
     <div class="container">
       <div class="card text-left">
         <div class="card-body">
-        <div class="alert alert-danger" v-if="!isLogin">Information enter incorrect</div>
+          <div class="alert alert-danger" v-if="!isLogin">Information enter incorrect</div>
           <form action="#" method="post" @submit.prevent="onLogin">
             <div class="form-group">
               <label for>Username</label>
@@ -21,6 +21,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -30,15 +31,31 @@ export default {
       isLogin: true
     };
   },
+  computed: {
+    ...mapGetters("AuthModule", { user: "GET_USER_LOGIN" })
+  },
   methods: {
     onLogin() {
-      if(this.username === 'ngtrdai197'&&this.password ==='123'){
-          this.isLogin = true;
-          setTimeout(() => {
-          this.$router.push('/');
-          }, 1000);
-      }else{
-          this.isLogin = false;
+      const _user = {
+        username: this.username,
+        password: this.password
+      };
+      this.$store.dispatch("AuthModule/LOGIN", _user);
+      if (this.user) {
+        this.$store.dispatch("AuthModule/SET_IS_LOGIN");
+        this.$router.push("/");
+        this.$toasted.success("Sign in successfully", {
+          theme: "toasted-primary",
+          position: "top-right",
+          duration: 1000
+        });
+      } else {
+        this.isLogin = false;
+        this.$toasted.error("Sign in failure", {
+          theme: "toasted-primary",
+          position: "top-right",
+          duration: 1000
+        });
       }
     }
   }

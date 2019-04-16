@@ -1,0 +1,17 @@
+@import "mixins";
+.homepage{
+    .row-content{
+        #carouselExampleIndicators{
+            @include mobileL{
+                background: #979797;
+                padding: 10px;
+            }
+            .home-products{
+                @include mobileTB{
+                    width: 85%;
+                    margin: auto;
+                }
+            }
+        }
+    }
+}

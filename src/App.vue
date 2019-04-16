@@ -34,5 +34,6 @@ export default {
 }
 .cover-transition {
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 </style>

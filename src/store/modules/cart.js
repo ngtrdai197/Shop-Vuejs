@@ -5,9 +5,7 @@ const cart = {
         quantity: localStorage.getItem('count') || 0
     },
     getters: {
-        GET_ALL_CART: state => {
-            return state.carts
-        }
+        GET_ALL_CART: state => state.carts
     },
     mutations: {
         ADD_CART: (state, payload) => {

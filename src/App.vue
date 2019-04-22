@@ -2,8 +2,13 @@
   <div id="app">
     <Header></Header>
     <div class="cover-transition">
-      <transition enter-active-class="animated slideOutLeft" leave-active-class="animated slideOutRight">
-        <router-view></router-view>
+      <transition
+        enter-active-class="animated slideOutLeft"
+        leave-active-class="animated slideOutRight"
+      >
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
       </transition>
       <Footer></Footer>
     </div>
@@ -18,7 +23,7 @@ export default {
   name: "app",
   components: {
     Header,
-    Footer,
+    Footer
   }
 };
 </script>
@@ -34,6 +39,13 @@ export default {
 }
 .cover-transition {
   margin-top: 60px;
-  margin-bottom: 60px;
+  height: 84vh;
+  overflow-y: scroll;
+}
+.navbar {
+  height: 8vh;
+}
+footer {
+  height: 8vh;
 }
 </style>

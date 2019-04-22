@@ -16,29 +16,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <router-link to="/" class="nav-link">Home</router-link>
+          <li class="nav-item">
+            <router-link to="/" class="nav-link" active-class="active"
+          exact>Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/" class="nav-link">Shop</router-link>
+            <router-link to="/service" class="nav-link" active-class="active">Services</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/service" class="nav-link">Services</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/contact" class="nav-link">Contact</router-link>
+            <router-link to="/contact" class="nav-link" active-class="active">Contact</router-link>
           </li>
           <li class="nav-item" v-if="!isLogin">
-            <router-link to="/auth/login" class="nav-link">Login</router-link>
+            <router-link to="/auth/login" class="nav-link" active-class="active">Login</router-link>
           </li>
-          <li class="nav-item" style="position: relative">
-            <router-link to="/cart" class="nav-link" title="Thêm vào giỏ đồ">
+          <li class="nav-item cart" style="position: relative">
+            <router-link to="/cart" class="nav-link" active-class="active" title="Thêm vào giỏ đồ">
               <i class="fas fa-cart-plus"></i>
               <span class="count">{{quantity}}</span>
             </router-link>
           </li>
           <li class="nav-item nav-image" v-if="isLogin" @click="toggleInformation()">
-            <div class="nav-link">
+            <div class="nav-link" active-class="active">
               <img src="http://nguyendai.me/images/avatar.jpg" alt srcset>
             </div>
             <div class="information" v-if="isInformation">
@@ -78,6 +76,7 @@ export default {
     signOut() {
       this.isInformation = !this.isInformation;
       this.$store.dispatch("AuthModule/SET_IS_LOGIN");
+      this.$store.dispatch("AuthModule/SIGN_OUT");
       this.$router.push({ name: "home" });
       this.$toasted.success("Sign out successfully", {
         theme: "toasted-primary",

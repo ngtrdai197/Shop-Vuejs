@@ -5,7 +5,7 @@
         <div class="col-md-3">
           <h3 class="text-center">Shop 3s</h3>
           <div class="infor-admin">
-            <img src="http://nguyendai.me/images/avatar.jpg" alt srcset>
+            <img src="http://nguyendai.me/images/avatar.jpg" alt srcset />
             <div
               class="username"
               data-toggle="collapse"
@@ -20,39 +20,25 @@
             >Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</div>
           </div>
           <ul>
-            <li>Components</li>
-            <li>Form</li>
-            <li>Table</li>
-            <li
-              class="data"
-              data-toggle="collapse"
-              href="#showDataBase"
-              role="button"
-              aria-expanded="false"
-              aria-controls="showDataBase"
-            >
-              Data
-              <div class="collapse multi-collapse" id="showDataBase">
-                <ul>
-                  <li>
-                    <router-link to="/auth/admin/user/user-manager" title="Quản lý User">User</router-link>
-                  </li>
-                  <li>
-                    <router-link
-                      to="/auth/admin/product/product-manager"
-                      title="Thêm sản phẩm"
-                    >Product</router-link>
-                  </li>
-                </ul>
-              </div>
+            <li>
+              <router-link to="user" class="nav-link" active-class="active" exact>Users</router-link>
             </li>
+            <li>
+              <router-link to="product" class="nav-link" active-class="active" exact>Products</router-link>
+            </li>
+            <li>Table</li>
             <li>Charts</li>
           </ul>
         </div>
         <div class="col-md-9">
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
+          <transition
+            enter-active-class="animated slideOutLeft"
+            leave-active-class="animated slideOutRight"
+          >
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
+          </transition>
         </div>
       </div>
     </div>
@@ -64,8 +50,8 @@ export default {
 };
 </script>
 
-
 <style lang="scss" scoped>
+@import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css);
 .admin-layout {
   height: 100%;
   .container-fluid {
@@ -103,6 +89,9 @@ export default {
             }
           }
         }
+      }
+      .col-md-9{
+        overflow: hidden;
       }
     }
   }

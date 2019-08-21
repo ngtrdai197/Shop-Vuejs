@@ -7,8 +7,9 @@
           <router-view></router-view>
         </keep-alive>
       </transition>
-      <Footer></Footer>
     </div>
+    <Footer></Footer>
+  </div>
 </template>
 <script>
 import Header from "./Share/Header.vue";
@@ -19,7 +20,6 @@ export default {
     Header,
     Footer
   }
-
 };
 </script>
 <style scoped>

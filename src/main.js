@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'fontawesome'
 import VueRouter from 'vue-router'
 import Toasted from 'vue-toasted'
-import { routes } from './routes'
+import { dashboard } from './routes/dashboard.route'
+import { admin } from './routes/admin.route'
+import { auth } from './routes/auth.route'
 import { store } from './store/store'
 
 Vue.config.productionTip = false
@@ -16,7 +18,11 @@ Vue.use(VueRouter, {
 })
 
 const router = new VueRouter({
-  routes,
+  routes: [
+    ...dashboard,
+    ...admin,
+    ...auth
+  ],
   mode: 'history'
 })
 
